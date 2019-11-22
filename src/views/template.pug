@@ -1,0 +1,23 @@
+html
+    head
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" )
+        meta(name='google-signin-client_id' content='121416165898-p8i2ivmg20vn5at6g3h39iti14pptfc5.apps.googleusercontent.com')
+        script(src='https://apis.google.com/js/platform.js' async='' defer='')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+        script(src='../public/js/script.js')
+    body
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            a.navbar-brand(href='#') Quan Ly Chi Tieu
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarText.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item.active
+                        a.nav-link(href='/') Home
+                    li.nav-item
+                        a.nav-link(href='/users') Users
+            if user
+                p= user.name
+        .container.pt-5   
+            block content
+            block create
