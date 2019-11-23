@@ -1,9 +1,18 @@
-// const passport = require("../middleware/passport");
 module.exports = {
   login: (req, res) => {
     res.render("auth/login");
   },
   googleCallback: (req, res) => {
-    res.send("loggined");
+    console.log(req.user);
+    res.cookie("userId", req.user.idGoogle, {
+      maxAge: 60000,
+      httpOnly: true,
+      signed: true
+    });
+    res.redirect("/home");
+  },
+  logout: (req, res) => {
+    res.clearCookie("userId");
+    res.redirect("/");
   }
 };

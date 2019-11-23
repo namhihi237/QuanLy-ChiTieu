@@ -17,15 +17,15 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: "http://localhost:5555/auth/google/callback"
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async (req, accessToken, refreshToken, profile, done) => {
       try {
-        console.log("profile", profile);
-        const exitstingUser = await Users.findOne({ id: profile.id });
+        // console.log("profile", profile);
+        const exitstingUser = await Users.findOne({ idGoogle: profile.id });
         if (exitstingUser) {
           return done(null, exitstingUser);
         }
         const user = await new Users({
-          id: profile.id,
+          idGoogle: profile.id,
           email: profile.emails[0].value,
           name: profile.name.familyName + " " + profile.name.givenName
         }).save();
@@ -34,3 +34,4 @@ passport.use(
     }
   )
 );
+module.exports = passport;

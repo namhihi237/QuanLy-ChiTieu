@@ -14,4 +14,6 @@ router.get(
   passport.authenticate("google"),
   authController.googleCallback
 );
+router.get("/logout", authController.logout);
+
 module.exports = router;

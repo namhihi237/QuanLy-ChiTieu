@@ -2,15 +2,15 @@ html
     head
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" )
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
-            a.navbar-brand(href='/') Quan Ly Chi Tieu
+            a.navbar-brand(href='#') Quan Ly Chi Tieu
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarText.collapse.navbar-collapse
                 ul.navbar-nav.mr-auto
                     li.nav-item.active
+                        a.nav-link(href='/auth/google') Login
+                    li.nav-item
                         a.nav-link(href='/home') Home
-                    //- li.nav-item
-                    //-     a.nav-link(href='/users') Users
             if user
                 p= user.name
         .container.pt-5   

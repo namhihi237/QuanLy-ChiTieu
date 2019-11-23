@@ -1,0 +1,23 @@
+extends ../template
+block content
+    h1 Lịch Sử Chi Tiêu
+    a.btn.btn-primary(href='/home/create' role='button') Create
+    a.btn.btn-primary.ml-5(href='/auth/logout' role='button') LogOut
+    table.table
+        tr
+            th money
+            th danh mục
+            th thể loại
+            th thời gian
+            th ghi chú
+            th edit
+        each spend in spends
+            tr
+                td=spend.money
+                td=spend.danhMuc
+                td=spend.theLoai
+                td=spend.date
+                td=spend.ghiChu
+                td
+                    a.btn.btn-light(href="#") Edit
+
