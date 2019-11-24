@@ -1,0 +1,37 @@
+extends ../template
+block content
+    h2 Edit
+
+    form(action="/home/edit/" +spend._id method="POST")
+        .form-group
+            label(for='exampleFormControlInput1') Monney
+            input#exampleFormControlInput1.form-control(type='text' name="money" placeholder='Nhập số tiền...' value=spend.money)
+        .form-group
+            label(for='exampleFormControlSelect1') Danh Mục
+            select#exampleFormControlSelect1.form-control(name="danhMuc" value=spend ? spend.danhMuc : '')
+                option Ăn uống
+                option Tán gái/trai
+                option Xe cộ
+                option Thẻ ĐT
+                option Làm đẹp
+                option Cà Phê, Trà Sữa
+                option Lương
+                option Phụ Cấp
+                option Tiết Kiệm
+                option Internet
+                option Tiền điện
+                option Tiền nước
+                option Đám,Tiệc
+                option Tiền học
+                option Mua sắm
+        .form-group
+            label(for='exampleFormControlSelect1') Thể Loại
+            select#exampleFormControlSelect1.form-control(name="theLoai")
+                option Chi
+                option Thu
+                option Cho Vay
+                option Nợ
+        .form-group
+            label(for='exampleFormControlTextarea1') Ghi chú
+            textarea#exampleFormControlTextarea1.form-control(rows='3' name="ghiChu")=spend.ghiChu
+        button.btn.btn-primary.mt-5 Save

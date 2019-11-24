@@ -16,8 +16,8 @@ block content
                 td=spend.money
                 td=spend.danhMuc
                 td=spend.theLoai
-                td=spend.date
+                td=`${spend.date.getDate()}/${spend.date.getMonth()}/${spend.date.getFullYear()}--${spend.date.getHours()}:${spend.date.getMinutes()}`
                 td=spend.ghiChu
                 td
-                    a.btn.btn-light(href="#") Edit
+                    a.btn.btn-light(href="/home/edit/" + spend._id) Edit
 
