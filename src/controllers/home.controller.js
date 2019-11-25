@@ -30,5 +30,10 @@ module.exports = {
     const idGoogle = newSpend.idGoogle;
     const spends = await Spends.find({ idGoogle });
     res.render("home/index", { spends });
+  },
+  delete: async (req, res) => {
+    const _id = req.params._id;
+    await Spends.findByIdAndDelete({ _id });
+    res.redirect("/home");
   }
 };

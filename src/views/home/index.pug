@@ -10,7 +10,8 @@ block content
             th thể loại
             th thời gian
             th ghi chú
-            th edit
+            th Sửa
+            th Xoá
         each spend in spends
             tr
                 td=spend.money
@@ -20,4 +21,6 @@ block content
                 td=spend.ghiChu
                 td
                     a.btn.btn-light(href="/home/edit/" + spend._id) Edit
+                td
+                    a.btn.btn-primary.ml-5(href='/home/delete/'+spend._id role='button') Delete
 
