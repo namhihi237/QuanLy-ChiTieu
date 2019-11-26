@@ -3,6 +3,9 @@ block content
     h1 Lịch Sử Chi Tiêu
     a.btn.btn-primary(href='/home/create' role='button') Create
     a.btn.btn-primary.ml-5(href='/auth/logout' role='button') LogOut
+    a.btn.btn-primary.ml-5(href='/chart' role='button') Báo Cáo
+    br
+    br
     table.table
         tr
             th money
@@ -11,7 +14,7 @@ block content
             th thời gian
             th ghi chú
             th Sửa
-            th Xoá
+            th &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Xoá
         each spend in spends
             tr
                 td=spend.money

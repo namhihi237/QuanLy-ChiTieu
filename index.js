@@ -5,6 +5,7 @@ require("./src/passport");
 
 const authRouter = require("./src/routes/auth.route");
 const homeRouter = require("./src/routes/home.route");
+const chartRouter = require("./src/routes/chart.route");
 const middleware = require("./src/middleware/login.middleware");
 
 const cookieParser = require("cookie-parser");
@@ -34,7 +35,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authRouter);
-app.use("/home", homeRouter);
+app.use("/home", middleware.loggedIn, homeRouter);
+app.use("/chart", middleware.loggedIn, chartRouter);
 
 app.get("/", (req, res) => {
   res.render("index");
