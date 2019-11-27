@@ -1,3 +1,7 @@
 extends ../template
 block content
-    canvas#pie-chart(width='800' height='450')
+    h3='Tổng số tiền : '+tongS+' VND'
+    p#money=money
+    p#danhmucs=danhmucs
+    canvas#pie-chart(width=`${400}` height=`${225}`)
+    script(src='/script.js')

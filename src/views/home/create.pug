@@ -5,7 +5,8 @@ block content
     form(action="/home" method="POST")
         .form-group
             label(for='exampleFormControlInput1') Monney
-            input#exampleFormControlInput1.form-control(type='text' name="money" placeholder='Nhập số tiền...')
+            input#exampleFormControlInput1.form-control(type='text' name="money" placeholder='Nhập số tiền...' required)
+            span(id='mess')
         .form-group
             label(for='exampleFormControlSelect1') Danh Mục
             select#exampleFormControlSelect1.form-control(name="danhMuc")

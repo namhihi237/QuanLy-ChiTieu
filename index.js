@@ -2,6 +2,7 @@ require("dotenv-safe").config({
   example: process.env.CI ? ".env.ci.example" : ".env.example"
 });
 require("./src/passport");
+const path = require("path");
 
 const authRouter = require("./src/routes/auth.route");
 const homeRouter = require("./src/routes/home.route");
@@ -29,7 +30,8 @@ app.set("view engine", "pug");
 app.use(cookieParser(process.env.COOKIEKEY));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static("public"));
+// app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(express.static("src/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());

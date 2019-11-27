@@ -12,8 +12,12 @@ module.exports = {
   },
   postCreate: async (req, res) => {
     const idGoogle = req.signedCookies.userId;
-    const item = Object.assign({ date: Date.now(), idGoogle }, req.body);
-    const newSpend = await Spends.create(item);
+    try {
+      const item = Object.assign({ date: Date.now(), idGoogle }, req.body);
+      const newSpend = await Spends.create(item);
+    } catch (error) {
+      console.log(error);
+    }
     const spends = await Spends.find({ idGoogle });
     res.render("home/index", { spends });
   },
