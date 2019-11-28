@@ -1,7 +1,96 @@
 extends ../template
 block content
     h3='Tổng số tiền : '+tongS+' VND'
-    p#money=money
-    p#danhmucs=danhmucs
+
     canvas#pie-chart(width=`${400}` height=`${225}`)
-    script(src='/script.js')
+    br
+    br
+    canvas#line-chart(width=`${400}` height=`${225}`)
+    //- script(src='/script.js')
+    script.
+        var moneyArrNum = [#{money}];
+        var danhmucArr = !{danhmucs}
+        var obj = {};
+        for (let i = 0; i < danhmucArr.length; i++) {
+            Object.assign(obj, { [danhmucArr[i]]: 0 });
+        }
+        const newDanhmucs = Object.keys(obj);
+        var newMoneys = [];
+        for (let i = 0; i < newDanhmucs.length; i++) {
+            let money = 0;
+            for (let j = 0; j < danhmucArr.length; j++) {
+                if (danhmucArr[j] === newDanhmucs[i]) {
+                    money = money + moneyArrNum[j];
+                }
+            }
+            newMoneys.push(money);
+        }
+        new Chart(document.getElementById("pie-chart"), {
+            type: "pie",
+            data: {
+                labels: newDanhmucs,
+                datasets: [
+                {
+                    label: "đơn vị (VND)",
+                    backgroundColor: [
+                    "#3e95cd",
+                    "#8e5ea2",
+                    "#3cba9f",
+                    "#e8c3b9",
+                    "#c45850",
+                    "#D2691E",
+                    "#7FFF00",
+                    "#00FFFF",
+                    "#4682B4",
+                    "#FFFFFF",
+                    "#0000FF"
+                    ],
+                    data: newMoneys
+                }
+                ]
+            },
+            options: {
+                title: {
+                display: true,
+                text: "Biểu đồ tỷ lệ tiêu dùng"
+                }
+            }
+            });
+
+        // Line chart
+        var dates = !{dates}
+        var obj2 = {};
+        for (let i = 0; i < dates.length; i++) {
+            Object.assign(obj2, { [dates[i]]: 0 });
+        }
+        const newDates = Object.keys(obj2);
+        var newMoneysDate = [];
+        for (let i = 0; i < newDates.length; i++) {
+            let money = 0;
+            for (let j = 0; j < dates.length; j++) {
+                if (dates[j] === newDates[i]) {
+                    money = money + moneyArrNum[j];
+                }
+            }
+            newMoneysDate.push(money);
+        }
+        new Chart(document.getElementById("line-chart"), {
+            type: "line",
+            data: {
+                labels: newDates,
+                datasets: [
+                {
+                    label: "đơn vị (VND)",
+                    data: newMoneysDate,
+                    borderColor: "#8e5ea2",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                title: {
+                display: true,
+                text: "Đồ Thị Tiêu Dùng Theo Ngày"
+                }
+            }
+            });
