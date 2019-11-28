@@ -5,12 +5,26 @@ const moneyArrNum = moneyArr.map(item => {
 });
 const danhmucs = document.getElementById("danhmucs").innerText;
 const danhmucArr = danhmucs.split(",");
-console.log(moneyArrNum);
+var obj = {};
+for (let i = 0; i < danhmucArr.length; i++) {
+  Object.assign(obj, { [danhmucArr[i]]: 0 });
+}
+const newDanhmucs = Object.keys(obj);
+var newMoneys = [];
+for (let i = 0; i < newDanhmucs.length; i++) {
+  let money = 0;
+  for (let j = 0; j < danhmucArr.length; j++) {
+    if (danhmucArr[j] === newDanhmucs[i]) {
+      money = money + moneyArrNum[j];
+    }
+  }
+  newMoneys.push(money);
+}
 
 new Chart(document.getElementById("pie-chart"), {
   type: "pie",
   data: {
-    labels: danhmucArr,
+    labels: newDanhmucs,
     datasets: [
       {
         label: "đơn vị (VND)",
@@ -19,9 +33,15 @@ new Chart(document.getElementById("pie-chart"), {
           "#8e5ea2",
           "#3cba9f",
           "#e8c3b9",
-          "#c45850"
+          "#c45850",
+          "#D2691E",
+          "#7FFF00",
+          "#00FFFF",
+          "#4682B4",
+          "#FFFFFF",
+          "#0000FF"
         ],
-        data: moneyArrNum
+        data: newMoneys
       }
     ]
   },

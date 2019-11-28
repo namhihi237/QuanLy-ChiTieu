@@ -8,11 +8,11 @@ block content
     br
     table.table
         tr
-            th money
-            th danh mục
-            th thể loại
-            th thời gian
-            th ghi chú
+            th Money
+            th Danh Mục
+            th Thể Loại
+            th Thời Gian
+            th Ghi Chú
             th Sửa
             th &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Xoá
         each spend in spends
@@ -23,7 +23,7 @@ block content
                 td=`${spend.date.getDate()}/${spend.date.getMonth()}/${spend.date.getFullYear()}--${spend.date.getHours()}:${spend.date.getMinutes()}`
                 td=spend.ghiChu
                 td
-                    a.btn.btn-light(href="/home/edit/" + spend._id) Edit
+                    a.btn.btn-info(href="/home/edit/" + spend._id) ...
                 td
-                    a.btn.btn-primary.ml-5(href='/home/delete/'+spend._id role='button') Delete
+                    a.btn.btn-danger.ml-5(href='/home/delete/'+spend._id role='button') Confirm
 
