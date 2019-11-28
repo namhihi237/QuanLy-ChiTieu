@@ -14,7 +14,7 @@ block content
             th Thời Gian
             th Ghi Chú
             th Sửa
-            th &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Xoá
+            th &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Xoá
         each spend in spends
             tr
                 td=spend.money
@@ -25,5 +25,5 @@ block content
                 td
                     a.btn.btn-info(href="/home/edit/" + spend._id) ...
                 td
-                    a.btn.btn-danger.ml-5(href='/home/delete/'+spend._id role='button') Confirm
+                    a.btn.btn-danger.ml-5(href='/home/delete/'+spend._id role='button') x
 

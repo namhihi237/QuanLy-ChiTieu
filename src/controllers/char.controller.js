@@ -12,9 +12,6 @@ module.exports = {
       danhmucs.push(spends[item].danhMuc);
       tongS += money[item];
     }
-    // console.log(spends);
-    // console.log(money);
-    // console.log(danhmucs);
     res.render("chart/index", { money, danhmucs, tongS });
   }
 };

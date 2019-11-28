@@ -8,7 +8,7 @@ block content
             input#exampleFormControlInput1.form-control(type='text' name="money" placeholder='Nhập số tiền...' value=spend.money)
         .form-group
             label(for='exampleFormControlSelect1') Danh Mục
-            select#exampleFormControlSelect1.form-control(name="danhMuc" value=spend ? spend.danhMuc : '')
+            select#exampleFormControlSelect1.form-control(name="danhMuc")
                 option Ăn uống
                 option Tán gái/trai
                 option Xe cộ
@@ -34,4 +34,7 @@ block content
         .form-group
             label(for='exampleFormControlTextarea1') Ghi chú
             textarea#exampleFormControlTextarea1.form-control(rows='3' name="ghiChu")=spend.ghiChu
-        button.btn.btn-primary.mt-5 Save
+        button.btn.btn-primary.mt-5.mr-5(type='submit') Save
+        button.btn.btn-primary.mt-5.ml-5.mr-5(type='reset') Reset
+        a.btn.btn-danger.ml-5.mt-5(href='/home') Cancel
+
