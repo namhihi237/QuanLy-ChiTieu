@@ -9,32 +9,24 @@ block content
         .form-group
             label(for='exampleFormControlSelect1') Danh Mục
             select#exampleFormControlSelect1.form-control(name="danhMuc")
-                option Ăn uống
-                option Tán gái/trai
-                option Xe cộ
-                option Thẻ ĐT
-                option Làm đẹp
-                option Cà Phê, Trà Sữa
-                option Lương
-                option Phụ Cấp
-                option Tiết Kiệm
-                option Internet
-                option Tiền điện
-                option Tiền nước
-                option Đám,Tiệc
-                option Tiền học
-                option Mua sắm
+                each category in categories
+                    option(selected=spend.danhMuc === category)=category
+
+
         .form-group
             label(for='exampleFormControlSelect1') Thể Loại
             select#exampleFormControlSelect1.form-control(name="theLoai")
-                option Chi
-                option Thu
-                option Cho Vay
-                option Nợ
+                each item in types
+                    option(selected=spend.theLoai === item)=item
+
+
         .form-group
             label(for='exampleFormControlTextarea1') Ghi chú
             textarea#exampleFormControlTextarea1.form-control(rows='3' name="ghiChu")=spend.ghiChu
+        //- p Select a date: 
+        //-     input(type='date' name='date')
         button.btn.btn-primary.mt-5.mr-5(type='submit') Save
         button.btn.btn-primary.mt-5.ml-5.mr-5(type='reset') Reset
         a.btn.btn-danger.ml-5.mt-5(href='/home') Cancel
+
 

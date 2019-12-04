@@ -9,4 +9,5 @@ router.post("/", homeController.postCreate);
 router.get("/edit/:_id", homeController.edit);
 router.post("/edit/:_id", homeController.editPost);
 router.get("/delete/:_id", homeController.delete);
+router.get("/user", homeController.user);
 module.exports = router;

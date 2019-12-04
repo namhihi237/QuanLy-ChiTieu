@@ -6,6 +6,9 @@ block content
     br
     br
     canvas#line-chart(width=`${400}` height=`${225}`)
+    br
+    br
+    canvas#bar-chart(width=`${400}` height=`${225}`)
     //- script(src='/script.js')
     script.
         var moneyArrNum = [#{money}];
@@ -91,6 +94,54 @@ block content
                 title: {
                 display: true,
                 text: "Đồ Thị Tiêu Dùng Theo Ngày"
+                }
+            }
+            });
+        // bar-chart
+        var months = !{months}
+        var obj3 = {};
+        for (let i = 0; i < months.length; i++) {
+            Object.assign(obj3, { [months[i]]: 0 });
+        }
+        const newMonths = Object.keys(obj3);
+        var newMoneysMonths = [];
+        for (let i = 0; i < newMonths.length; i++) {
+            let money = 0;
+            for (let j = 0; j < months.length; j++) {
+                if (months[j] === newMonths[i]) {
+                    money = money + moneyArrNum[j];
+                }
+            }
+            newMoneysMonths.push(money);
+        }
+        new Chart(document.getElementById("bar-chart"), {
+            type: "bar",
+            data: {
+                labels: newMonths,
+                datasets: [
+                {
+                    label: "đơn vị (VND)",
+                    data: newMoneysMonths,
+                    backgroundColor: [
+                    "#3e95cd",
+                    "#8e5ea2",
+                    "#3cba9f",
+                    "#e8c3b9",
+                    "#c45850",
+                    "#D2691E",
+                    "#7FFF00",
+                    "#00FFFF",
+                    "#4682B4",
+                    "#FFFFFF",
+                    "#0000FF"
+                    ],
+                }
+                ]
+            },
+            options: {
+                title: {
+                display: true,
+                text: "Đồ Thị Tiêu Dùng Theo Tháng"
                 }
             }
             });

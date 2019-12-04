@@ -2,7 +2,6 @@ require("dotenv-safe").config({
   example: process.env.CI ? ".env.ci.example" : ".env.example"
 });
 require("./src/passport");
-const path = require("path");
 
 const authRouter = require("./src/routes/auth.route");
 const homeRouter = require("./src/routes/home.route");

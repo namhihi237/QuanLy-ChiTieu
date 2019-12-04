@@ -5,7 +5,7 @@ module.exports = {
   googleCallback: (req, res) => {
     console.log(req.user);
     res.cookie("userId", req.user.idGoogle, {
-      maxAge: 600000,
+      maxAge: 1200000,
       httpOnly: true,
       signed: true
     });

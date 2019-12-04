@@ -1,29 +1,35 @@
 extends ../template
 block content
-    h1 Lịch Sử Chi Tiêu
-    a.btn.btn-primary(href='/home/create' role='button') Create
-    a.btn.btn-primary.ml-5(href='/auth/logout' role='button') LogOut
-    a.btn.btn-primary.ml-5(href='/chart' role='button') Báo Cáo
-    br
-    br
-    table.table
-        tr
-            th Money
-            th Danh Mục
-            th Thể Loại
-            th Thời Gian
-            th Ghi Chú
-            th Sửa
-            th &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Xoá
-        each spend in spends
-            tr
-                td=spend.money
-                td=spend.danhMuc
-                td=spend.theLoai
-                td=`${spend.date.getDate()}/${spend.date.getMonth()}/${spend.date.getFullYear()}--${spend.date.getHours()}:${spend.date.getMinutes()}`
-                td=spend.ghiChu
-                td
-                    a.btn.btn-info(href="/home/edit/" + spend._id) ...
-                td
-                    a.btn.btn-danger.ml-5(href='/home/delete/'+spend._id role='button') x
-
+    div(style='margin-top:40px')
+        h1 Lịch Sử Chi Tiêu
+        a.btn.btn-primary(href='/home/create' role='button') Create
+        a.btn.btn-primary.ml-5(href='/chart' role='button') Báo Cáo
+        //- a.btn.btn-primary.ml-5(href='/home/sort' role='button') Sắp xếp 
+        br
+        br
+        table#table-id.table.table-striped.table-bordered
+            thead
+                tr
+                    th Money
+                    th Danh Mục
+                    th Thể Loại
+                    th Thời Gian
+                    th Ghi Chú
+                    th Sửa
+                    th &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Xoá
+            tbody
+                each spend in spends
+                    tr
+                        td=spend.money
+                        td=spend.danhMuc
+                        td=spend.theLoai
+                        td=`${spend.date.getDate()}/${spend.date.getMonth()}/${spend.date.getFullYear()}--${spend.date.getHours()}:${spend.date.getMinutes()}`
+                        td=spend.ghiChu
+                        td
+                            a.btn.btn-info(href="/home/edit/" + spend._id) ...
+                        td
+                            a.btn.btn-danger.ml-5(href='/home/delete/'+spend._id role='button') x
+    script.
+        $(document).ready(function() {
+            $('#table-id').DataTable( );
+        } );
